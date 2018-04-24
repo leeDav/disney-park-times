@@ -19,7 +19,8 @@ service: disney-ride-serverless
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
+  memorySize: 512
 
 # you can overwrite defaults here
 #  stage: dev
@@ -47,10 +48,10 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  include:
+package:
+ include:
 #    - include-me.js
-#    - include-me-dir/**
+   - node_modules/**
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
@@ -58,6 +59,8 @@ provider:
 functions:
   hello:
     handler: handler.hello
+  magicKingdom:
+    handler: park.magicKingdom
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
